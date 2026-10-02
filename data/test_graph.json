@@ -1,0 +1,19 @@
+{
+  "nodes": [
+    {"id": "app-sa", "type": "subject"},
+    {"id": "create-pods", "type": "permission"},
+    {"id": "builder-sa", "type": "subject"},
+    {"id": "bind-admin", "type": "permission"},
+    {"id": "cluster-admin", "type": "target"},
+    {"id": "reader-sa", "type": "subject"},
+    {"id": "read-pods", "type": "permission"}
+  ],
+  "edges": [
+    ["app-sa", "create-pods"],
+    ["create-pods", "builder-sa"],
+    ["builder-sa", "bind-admin"],
+    ["bind-admin", "cluster-admin"],
+    ["reader-sa", "read-pods"]
+  ],
+  "target": "cluster-admin"
+}

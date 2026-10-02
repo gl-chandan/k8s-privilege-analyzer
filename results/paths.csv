@@ -1,0 +1,4 @@
+Path ID,Source,Target,Path Length,Path
+1,serviceaccount::kube-system::helm-traefik,clusterrole::cluster-admin,2,serviceaccount::kube-system::helm-traefik -> clusterrolebinding::helm-kube-system-traefik -> clusterrole::cluster-admin
+2,serviceaccount::kube-system::helm-traefik-crd,clusterrole::cluster-admin,2,serviceaccount::kube-system::helm-traefik-crd -> clusterrolebinding::helm-kube-system-traefik-crd -> clusterrole::cluster-admin
+3,group::system:masters,clusterrole::cluster-admin,2,group::system:masters -> clusterrolebinding::cluster-admin -> clusterrole::cluster-admin

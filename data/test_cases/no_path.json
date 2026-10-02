@@ -1,0 +1,15 @@
+{
+  "nodes": [
+    {"id": "app-sa", "type": "subject"},
+    {"id": "read-pods", "type": "permission"},
+    {"id": "builder-sa", "type": "subject"},
+    {"id": "list-secrets", "type": "permission"},
+    {"id": "cluster-admin", "type": "target"}
+  ],
+  "edges": [
+    ["app-sa", "read-pods"],
+    ["builder-sa", "list-secrets"]
+  ],
+  "target": "cluster-admin",
+  "expected_paths": []
+}
