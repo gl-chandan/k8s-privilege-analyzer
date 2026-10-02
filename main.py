@@ -1,10 +1,16 @@
 
+
+
 import csv
 import os
+import time
 
 from src.graph_builder import build_graph
 from src.visualize import draw_graph
-from src.path_analyzer import find_escalation_paths
+from src.path_analyzer import (
+    find_escalation_paths,
+    find_direct_admin_assignments
+)
 
 
 # Step 1: Build the graph
@@ -61,3 +67,27 @@ with open("results/paths.csv", "w", newline="") as file:
 
 print("\nPaths saved to results/paths.csv")
 
+
+# Step 7: Compare baseline and graph-based method
+baseline_start = time.perf_counter()
+baseline_paths = find_direct_admin_assignments(graph, target)
+baseline_time = time.perf_counter() - baseline_start
+
+graph_start = time.perf_counter()
+graph_paths = find_escalation_paths(graph, target, max_depth=6)
+graph_time = time.perf_counter() - graph_start
+
+print("\nComparative Evaluation")
+print("Baseline paths:", len(baseline_paths))
+print("Graph-based paths:", len(graph_paths))
+print(f"Baseline time: {baseline_time:.6f} seconds")
+print(f"Graph-based time: {graph_time:.6f} seconds")
+
+os.makedirs("results", exist_ok=True)
+with open("results/baseline_comparison.csv", "w", newline="") as file:
+    writer = csv.writer(file)
+    writer.writerow(["Method", "Candidate Paths", "Execution Time (seconds)"])
+    writer.writerow(["Baseline", len(baseline_paths), baseline_time])
+    writer.writerow(["Graph-based", len(graph_paths), graph_time])
+
+print("Comparison saved to results/baseline_comparison.csv")

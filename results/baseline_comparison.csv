@@ -1,0 +1,3 @@
+Method,Candidate Paths,Execution Time (seconds)
+Baseline,3,0.0003011999997397652
+Graph-based,3,0.004080699999576609

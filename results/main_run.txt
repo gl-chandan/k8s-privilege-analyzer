@@ -1561,3 +1561,10 @@ Path 2: serviceaccount::kube-system::helm-traefik-crd -> clusterrolebinding::hel
 Path 3: group::system:masters -> clusterrolebinding::cluster-admin -> clusterrole::cluster-admin
 
 Paths saved to results/paths.csv
+
+Comparative Evaluation
+Baseline paths: 3
+Graph-based paths: 3
+Baseline time: 0.000301 seconds
+Graph-based time: 0.004081 seconds
+Comparison saved to results/baseline_comparison.csv
